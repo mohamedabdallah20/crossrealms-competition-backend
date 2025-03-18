@@ -1,0 +1,10 @@
+.env
+**/__pycache__/
+*.pyc
+*.pyo
+errors.log
+
+.DS_Store
+uploads_groq/
+app/routes/test_chat.py
+app/routes/chat_routes_archived.py
