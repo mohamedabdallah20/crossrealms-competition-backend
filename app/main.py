@@ -2,7 +2,7 @@ from fastapi import FastAPI, Depends,Request,APIRouter,HTTPException
 from fastapi.exceptions import RequestValidationError
 from fastapi.responses import JSONResponse,PlainTextResponse
 from starlette.exceptions import HTTPException as StarletteHTTPException
-# from app.routes.chat_routes import chatroutes 
+from app.routes.chat_routes import chatroutes 
 import logging
 from fastapi.middleware.cors import CORSMiddleware
 from app.config import settings
@@ -58,5 +58,5 @@ async def catch_all_exception_handler(request: Request, exc: Exception):
 @app.get("/")
 async def root():
     return {"message": "Hello World"}
-# app.include_router(chatroutes, prefix="/api/chat", tags=["chat"])
+app.include_router(chatroutes, prefix="/api/chat", tags=["chat"])
 
