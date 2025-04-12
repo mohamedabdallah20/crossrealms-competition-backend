@@ -9,13 +9,14 @@ from app.config import settings
 
 app = FastAPI()
 
-# app.add_middleware(
-#     CORSMiddleware,
-#     allow_origins=[settings.DEVELOPMENT_DOMAIN if settings.ENVIRONMENT == "development" else settings.PRODUCTION_DOMAIN],  # Allow specific domain based on environment
-#     allow_credentials=True,
-#     allow_methods=["*"],  # Allow all methods
-#     allow_headers=["*"],  # Allow all headers
-# )
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],  # Allow all origins
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
 
 # Custom exception handler for HTTPException
 @app.exception_handler(StarletteHTTPException)
@@ -57,6 +58,7 @@ async def catch_all_exception_handler(request: Request, exc: Exception):
 
 @app.get("/")
 async def root():
-    return {"message": "Hello World"}
+    return {"message": "CrossRealms Competition API : please use /docs to use the app within the browser",
+            "ps" : "Don't forget to set the environment variable GROQ_API_KEY and make sure that mongoDB is up and running with the correct credentials in the .env file" }
 app.include_router(chatroutes, prefix="/api/chat", tags=["chat"])
 
