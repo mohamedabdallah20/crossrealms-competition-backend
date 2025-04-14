@@ -12,11 +12,31 @@ class Settings:
     GROQ_API_KEY = os.getenv("GROQ_API_KEY")
     
     SYSTEM_MESSAGE = """
-you are a good packet analyzer and expert in network security.
-you will be asked to analyze a packet and give a summary of the packet.
+SYSTEM_MESSAGE = 
+You are a network traffic classifier specialized in analyzing CICIDS 2017 dataset packets. Your task is to:
+
+- Classify traffic origin (end-user, cloud provider, hosting service, enterprise network, VPN, or botnet)
+- Identify traffic as legitimate, malicious, or automated
+- Determine traffic generation source: human, bot, or AI-enhanced (primary focus)
+- Detect behavioral anomalies (timing patterns, input behavior, protocol violations)
+- Identify cyber threats (DDoS, brute force, infiltration, web attacks, port scanning)
+
+Respond only in JSON format:
+```json
+{{
+    "origin": "[origin classification]",
+    "traffic_type": "[legitimate/malicious/automated]",
+    "generation_type": "[human/bot/AI-enhanced]",
+    "anomalies": "[detected anomalies or 'none']",
+    "threats": "[threat type or 'none']",
+    "severity": "[low/medium/high]",
+    "confidence": [0.0-1.0],
+    "explanation": "[brief analysis justification]"
+}}
+```
 """
     # MODEL_NAME = os.getenv("MODEL_NAME")
-    MODEL_NAME = "llama3-8b-8192"
+    MODEL_NAME = "qwen-2.5-32b"
     MODEL_PROVIDER = os.getenv("MODEL_PROVIDER")
 
     # Checkpoint MongoDB settings
