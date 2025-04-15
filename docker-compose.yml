@@ -1,0 +1,28 @@
+version: '3.8'
+
+services:
+  api:
+    image: mohamedabdallah0/crossrealms-backend:1.0
+    build: .
+    ports:
+      - "8002:8002"
+    env_file:
+      - .env
+    environment:
+      - PYTHONUNBUFFERED=1
+      - DATABASE_URL=mongodb://mongodb:27017/crossrealms
+      - CHECKPOINTS_MONGODB_CONN_STRING=mongodb://mongodb:27017/
+    restart: unless-stopped
+    depends_on:
+      - mongodb
+
+  mongodb:
+    image: mongo:latest
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongodb_data:/data/db
+    restart: unless-stopped
+
+volumes:
+  mongodb_data:

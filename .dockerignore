@@ -1,0 +1,38 @@
+# Version control
+.git
+.gitignore
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+venv/
+.env
+.venv
+env/
+ENV/
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Docker
+Dockerfile
+.dockerignore
+
+# Logs
+*.log
+
+# Local development
+*.sqlite3
+*.db
+
+docker-compose.yml
+Dockerfile
+README.md
+# Keep example files
+!.env.example 
