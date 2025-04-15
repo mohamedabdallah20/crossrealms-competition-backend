@@ -97,7 +97,6 @@ Required environment variables in `.env`:
 - `CHECKPOINTS_MONGODB_CONN_STRING`: MongoDB connection string for checkpoints
 - `CHECKPOINTS_MONGODB_DB_NAME`: Database name for checkpoints
 - `CHECKPOINTS_MONGODB_COLLECTION_NAME`: Collection name for checkpoints
-- `MAX_TOKENS_TRIMMER`: Maximum tokens for trimming
 
 ## Development Notes
 

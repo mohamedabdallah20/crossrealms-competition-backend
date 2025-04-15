@@ -36,14 +36,14 @@ Respond only in JSON format:
 ```
 """
     # MODEL_NAME = os.getenv("MODEL_NAME")
-    MODEL_NAME = "qwen-2.5-32b"
+    MODEL_NAME = "qwen-qwq-32b"
     MODEL_PROVIDER = os.getenv("MODEL_PROVIDER")
 
     # Checkpoint MongoDB settings
     CHECKPOINTS_MONGODB_CONN_STRING= os.getenv("CHECKPOINTS_MONGODB_CONN_STRING", "mongodb://localhost:27017")
     CHECKPOINTS_MONGODB_DB_NAME= os.getenv("CHECKPOINTS_MONGODB_DB_NAME", "crossrealms")
     CHECKPOINTS_MONGODB_COLLECTION_NAME= os.getenv("CHECKPOINTS_MONGODB_COLLECTION_NAME", "checkpoints")
-    MAX_TOKENS_TRIMMER = int(os.getenv("MAX_TOKENS_TRIMMER", 10000))
+    # MAX_TOKENS_TRIMMER = int(os.getenv("MAX_TOKENS_TRIMMER", 10000))
 
 # Create an instance of the settings
 settings = Settings()

@@ -9,9 +9,18 @@ chatroutes = APIRouter()
 
 @chatroutes.get("/threads", response_model=List[ThreadInfo])
 async def get_threads_endpoint():
-    """Endpoint to get all threads"""
+    """Endpoint to get all threads (chats)."""
     threads = await get_threads()
     return threads
+
+@chatroutes.post("/new-thread", response_model=NewThreadResponse)
+async def new_chat_endpoint(
+    new_thread: CreateNewThread,
+):
+    """Endpoint to start a new chat."""
+    thread_id = await start_new_thread(new_thread)
+    return NewThreadResponse(thread_id=thread_id)
+
 @chatroutes.patch("/update-thread-name/{thread_id}", response_model=ThreadInfo)
 async def update_thread_name_endpoint(thread_id: str, thread_name: str):
     """Endpoint to update the name of a thread."""
@@ -21,13 +30,6 @@ async def update_thread_name_endpoint(thread_id: str, thread_name: str):
 async def delete_thread_endpoint(thread_id: str):
     """Endpoint to delete a thread."""
     return await delete_thread(thread_id)
-@chatroutes.post("/new-thread", response_model=NewThreadResponse)
-async def new_chat_endpoint(
-    new_thread: CreateNewThread,
-):
-    """Endpoint to start a new chat."""
-    thread_id = await start_new_thread(new_thread)
-    return NewThreadResponse(thread_id=thread_id)
 
 @chatroutes.post("/chat/{thread_id}", response_model=ChatResponse)
 async def chat_endpoint(

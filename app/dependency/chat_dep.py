@@ -55,12 +55,12 @@ async def get_workflow(model = Depends(get_base_chat_model)) -> StateGraph:
     )
 
     trimmer = trim_messages(
-        max_tokens=settings.MAX_TOKENS_TRIMMER,
         strategy="last",
-        token_counter=model,
+        token_counter=len,
+        max_tokens=1,
+        start_on="human",
         include_system=True,
         allow_partial=False,
-        start_on="human",
     )
         
     
@@ -74,14 +74,14 @@ async def get_workflow(model = Depends(get_base_chat_model)) -> StateGraph:
         messages = state.get("messages", [])
         
         # Apply trimming if needed
-        # if len(messages) > 2:  
-        if False:  
-            trimmed_messages = trimmer.invoke({"messages": messages})
+        if len(messages) > 2:  
+        # if False:  
+            trimmed_messages = trimmer.invoke(messages)
         else:
             trimmed_messages = messages
         
         # Format with prompt template
-        prompt = prompt_template.invoke({"messages": trimmed_messages})
+        prompt = prompt_template.invoke(trimmed_messages)
         
         # Get response from model
         response = await model.ainvoke(prompt)
