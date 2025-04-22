@@ -2,7 +2,7 @@ version: '3.8'
 
 services:
   api:
-    image: mohamedabdallah0/crossrealms-backend:1.1
+    image: mohamedabdallah0/crossrealms-backend:1.2
     build: .
     ports:
       - "8002:8002"
