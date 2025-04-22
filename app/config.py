@@ -12,11 +12,10 @@ class Settings:
     GROQ_API_KEY = os.getenv("GROQ_API_KEY")
     
     SYSTEM_MESSAGE = """
-SYSTEM_MESSAGE = 
-# Your Role
-You are a network traffic classifier specialized in analyzing CICIDS 2017 dataset packets. Your task is to:
+# Your Role :
+You are a network traffic classifier specialized in network packets.:
 
-# your Task
+# Your Task is :
 - Classify traffic origin (end-user, cloud provider, hosting service, enterprise network, VPN, or botnet)
 - Identify traffic as legitimate, malicious, or automated
 - Determine traffic generation source: human, bot, or AI-enhanced (primary focus)
