@@ -84,7 +84,7 @@
      --env-file .env \
      -e DATABASE_URL=mongodb://host.docker.internal:27017/crossrealms \
      -e CHECKPOINTS_MONGODB_CONN_STRING=mongodb://host.docker.internal:27017/ \
-     mohamedabdallah0/crossrealms-backend:1.0
+     mohamedabdallah0/crossrealms-backend:1.2
    ```
 
 ## Environment Variables
@@ -103,5 +103,5 @@ Required environment variables in `.env`:
 - The application uses FastAPI framework
 - MongoDB is required for data persistence
 - Python 3.13 is required for local development
-- Docker deployment uses pre-built image `mohamedabdallah0/crossrealms-backend:1.0`
+- Docker deployment uses pre-built image `mohamedabdallah0/crossrealms-backend:1.2`
 - MongoDB data is persisted using Docker volumes
